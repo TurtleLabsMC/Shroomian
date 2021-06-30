@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "reverie",
+  "version": "${version}",
+  "name": "Reverie",
+  "description": "",
+  "authors": [],
+  "contact": {
+    "repo": "https://github.com/TurtleLabsMC/Reverie"
+  },
+  "license": "",
+  "icon": "assets/Reverie/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "com.github.turtlelabsmc.reverie.client.ReverieClient"
+    ],
+    "main": [
+      "com.github.turtlelabsmc.reverie.Reverie"
+    ]
+  },
+  "mixins": [
+    "reverie.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.11.6",
+    "fabric": "*",
+    "minecraft": "1.17"
+  }
+}
