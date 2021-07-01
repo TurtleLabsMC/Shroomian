@@ -4,6 +4,7 @@
   "package": "com.github.turtlelabsmc.reverie.mixin",
   "compatibilityLevel": "JAVA_16",
   "mixins": [
+    "EntityMixin"
   ],
   "client": [
   ],
