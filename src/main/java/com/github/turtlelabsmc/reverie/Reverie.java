@@ -19,6 +19,7 @@ public class Reverie implements ModInitializer
 
         PotionRegistry.register();
         StatusEffectRegistry.register();
+        EntityRegistry.init();
     }
 
     public static Identifier modId(String path)
