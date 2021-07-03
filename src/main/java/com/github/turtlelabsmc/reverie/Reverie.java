@@ -1,6 +1,7 @@
 package com.github.turtlelabsmc.reverie;
 
 import com.github.turtlelabsmc.reverie.event.EventManager;
+import com.github.turtlelabsmc.reverie.registry.EntityRegistry;
 import com.github.turtlelabsmc.reverie.registry.PotionRegistry;
 import com.github.turtlelabsmc.reverie.registry.StatusEffectRegistry;
 import net.fabricmc.api.ModInitializer;

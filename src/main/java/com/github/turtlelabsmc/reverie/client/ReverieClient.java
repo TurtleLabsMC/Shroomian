@@ -11,5 +11,6 @@ public class ReverieClient implements ClientModInitializer
     public void onInitializeClient()
     {
         System.out.println("Reverie client loading");
+        EntityModels.register();
     }
 }

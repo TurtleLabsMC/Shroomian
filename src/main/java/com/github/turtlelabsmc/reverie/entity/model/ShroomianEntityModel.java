@@ -4,16 +4,13 @@ import com.github.turtlelabsmc.reverie.entity.ShroomianEntity;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.model.*;
-import net.minecraft.client.render.VertexConsumer;
-import net.minecraft.client.render.entity.model.EntityModel;
-import net.minecraft.client.render.entity.model.QuadrupedEntityModel;
 import net.minecraft.client.render.entity.model.SinglePartEntityModel;
-import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.math.MathHelper;
 
 @Environment(EnvType.CLIENT)
-public class ShroomianEntityModel<T extends ShroomianEntity> extends SinglePartEntityModel<T> {
+public class ShroomianEntityModel extends SinglePartEntityModel<ShroomianEntity>
+{
+    private static final TexturedModelData MODEL_DATA;
 
     private final ModelPart root;
     private final ModelPart cap;
@@ -23,9 +20,9 @@ public class ShroomianEntityModel<T extends ShroomianEntity> extends SinglePartE
     private final ModelPart leg_right;
     private final ModelPart arm_right;
 
-    public ShroomianEntityModel(ModelPart root) {
-
-        this.root = root;
+    public ShroomianEntityModel()
+    {
+        this.root = MODEL_DATA.createModel();
         this.cap = root.getChild("cap");
         this.body = root.getChild("body");
         this.arm_left = root.getChild("arm_left");
@@ -34,31 +31,14 @@ public class ShroomianEntityModel<T extends ShroomianEntity> extends SinglePartE
         this.leg_left = root.getChild("leg_left");
     }
 
-    public ModelPart getPart() {
+    public ModelPart getPart()
+    {
         return this.root;
     }
 
-    public static TexturedModelData createModelData(){
-        ModelData modelData = new ModelData();
-        ModelPartData modelPartData = modelData.getRoot();
-
-        modelPartData.addChild("cap", ModelPartBuilder.create().uv(0, 0).cuboid(-6.0F, -3.5F, -6.0F, 12.0F, 5.0F, 12.0F).cuboid(-6.0F, -3.5F, -6.0F, 12.0F, 5.0F, 12.0F).cuboid(-5.0F, 1.5F, -5.0F, 10.0F, 1.0F, 10.0F), ModelTransform.pivot(0.0F, 15.6F, 1.2F));
-
-        modelPartData.addChild("body", ModelPartBuilder.create().uv(0, 28).cuboid(-3.0F, -8.0F, -3.0F, 6.0F, 6.0F, 6.0F), ModelTransform.pivot(0.0F, 24.0F, 0.0F));
-
-        modelPartData.addChild("arm_left", ModelPartBuilder.create().uv(0, 0).cuboid(-1.1F, 0.0F, -1.0F, 2.0F, 4.0F, 2.0F), ModelTransform.pivot(4.0F, 18.0F, 0.0F));
-
-        modelPartData.addChild("arm_right", ModelPartBuilder.create().uv(0, 0).cuboid(-0.9F, 0.0F, -1.0F, 2.0F, 4.0F, 2.0F), ModelTransform.pivot(-4.0F, 18.0F, 0.0F));
-
-        modelPartData.addChild("leg_left", ModelPartBuilder.create().uv(0, 6).cuboid(-1.0F, 0.0F, -1.0F, 2.0F, 2.0F, 2.0F), ModelTransform.pivot(2.0F, 22.0F, 0.0F));
-
-        modelPartData.addChild("leg_right", ModelPartBuilder.create().uv(0, 6).cuboid(-1.0F, 0.0F, -1.0F, 2.0F, 2.0F, 2.0F), ModelTransform.pivot(-2.0F, 22.0F, 0.0F));
-
-        return TexturedModelData.of(modelData, 64, 64);
-    }
-
     @Override
-    public void setAngles(ShroomianEntity entity, float limbAngle, float limbDistance, float animationProgress, float headYaw, float headPitch) {
+    public void setAngles(ShroomianEntity entity, float limbAngle, float limbDistance, float animationProgress, float headYaw, float headPitch)
+    {
         this.cap.setAngles(-0.5236F, 0.0F, 0.0F);
         this.body.pitch = ((float) Math.PI / 2F);
         this.leg_right.pitch = MathHelper.cos(limbAngle * 0.6662F) * 1.4F * limbDistance;
@@ -67,6 +47,19 @@ public class ShroomianEntityModel<T extends ShroomianEntity> extends SinglePartE
         this.arm_right.roll = -animationProgress;
     }
 
+    static {
+        ModelData modelData = new ModelData();
+        ModelPartData modelPartData = modelData.getRoot();
+
+        modelPartData.addChild("cap", ModelPartBuilder.create().uv(0, 0).cuboid(-6.0F, -3.5F, -6.0F, 12.0F, 5.0F, 12.0F).cuboid(-6.0F, -3.5F, -6.0F, 12.0F, 5.0F, 12.0F).cuboid(-5.0F, 1.5F, -5.0F, 10.0F, 1.0F, 10.0F), ModelTransform.pivot(0.0F, 15.6F, 1.2F));
+        modelPartData.addChild("body", ModelPartBuilder.create().uv(0, 28).cuboid(-3.0F, -8.0F, -3.0F, 6.0F, 6.0F, 6.0F), ModelTransform.pivot(0.0F, 24.0F, 0.0F));
+        modelPartData.addChild("arm_left", ModelPartBuilder.create().uv(0, 0).cuboid(-1.1F, 0.0F, -1.0F, 2.0F, 4.0F, 2.0F), ModelTransform.pivot(4.0F, 18.0F, 0.0F));
+        modelPartData.addChild("arm_right", ModelPartBuilder.create().uv(0, 0).cuboid(-0.9F, 0.0F, -1.0F, 2.0F, 4.0F, 2.0F), ModelTransform.pivot(-4.0F, 18.0F, 0.0F));
+        modelPartData.addChild("leg_left", ModelPartBuilder.create().uv(0, 6).cuboid(-1.0F, 0.0F, -1.0F, 2.0F, 2.0F, 2.0F), ModelTransform.pivot(2.0F, 22.0F, 0.0F));
+        modelPartData.addChild("leg_right", ModelPartBuilder.create().uv(0, 6).cuboid(-1.0F, 0.0F, -1.0F, 2.0F, 2.0F, 2.0F), ModelTransform.pivot(-2.0F, 22.0F, 0.0F));
+
+        MODEL_DATA = TexturedModelData.of(modelData, 64, 64);
+    }
 }
         /* cap.setPivot(0.0F, 15.6F, 1.2F);
         setRotationAngle(cap, -0.5236F, 0.0F, 0.0F);
