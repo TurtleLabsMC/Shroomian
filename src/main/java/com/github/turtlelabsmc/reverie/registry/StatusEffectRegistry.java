@@ -22,7 +22,7 @@ public class StatusEffectRegistry
         }
     }
 
-    public static StatusEffect addToRegistry(String registryName, StatusEffect statusEffect)
+    private static StatusEffect addToRegistry(String registryName, StatusEffect statusEffect)
     {
         STATUS_EFFECTS.put(Reverie.modId(registryName), statusEffect);
         return statusEffect;
