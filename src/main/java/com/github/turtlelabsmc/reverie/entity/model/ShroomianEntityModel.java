@@ -40,7 +40,8 @@ public class ShroomianEntityModel extends SinglePartEntityModel<ShroomianEntity>
     public void setAngles(ShroomianEntity entity, float limbAngle, float limbDistance, float animationProgress, float headYaw, float headPitch)
     {
         this.cap.setAngles(-0.5236F, 0.0F, 0.0F);
-        this.body.pitch = ((float) Math.PI / 2F);
+
+        //this.body.pitch = ((float) Math.PI / 2F);
         this.leg_right.pitch = MathHelper.cos(limbAngle * 0.6662F) * 1.4F * limbDistance;
         this.leg_left.pitch = MathHelper.cos(limbAngle * 0.6662F + (float) Math.PI) * 1.4F * limbDistance;
         this.arm_left.roll = animationProgress;
