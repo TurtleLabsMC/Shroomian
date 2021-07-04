@@ -1,14 +1,18 @@
 package com.github.turtlelabsmc.reverie.entity;
 
 import com.github.turtlelabsmc.reverie.registry.EntityRegistry;
+import net.minecraft.block.BlockState;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer.Builder;
 import net.minecraft.entity.attribute.EntityAttributes;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandler;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.mob.HoglinEntity;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.passive.AnimalEntity;
@@ -18,6 +22,8 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.tag.FluidTags;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.LocalDifficulty;
 import net.minecraft.world.ServerWorldAccess;
@@ -26,6 +32,7 @@ import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeKeys;
 import org.jetbrains.annotations.Nullable;
 
+import javax.swing.*;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -42,6 +49,27 @@ public class ShroomianEntity extends AnimalEntity
     public static Builder createShroomianAttributes()
     {
         return MobEntity.createMobAttributes().add(EntityAttributes.GENERIC_MAX_HEALTH, 30.0D).add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.2D);
+    }
+
+    public void pushAwayFrom(Entity entity) {
+            if (!entity.noClip && !this.noClip) {
+                LivingEntity livingEntity = (LivingEntity)entity;
+                livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.POISON, 100, 1));
+        }
+    }
+
+    public void onHit(){
+            LivingEntity livingEntity = this.getAttacker();
+            livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.POISON, 60, 1));
+    }
+
+    public boolean damage(DamageSource source, float amount) {
+        if (super.damage(source, amount) && this.getAttacker() != null) {
+            this.onHit();
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override

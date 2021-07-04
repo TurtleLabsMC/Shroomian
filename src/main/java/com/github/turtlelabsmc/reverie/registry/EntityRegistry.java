@@ -13,7 +13,7 @@ public class EntityRegistry
     public static final EntityType<ShroomianEntity> SHROOMIAN = Registry.register(
             Registry.ENTITY_TYPE,
             Reverie.modId("shroomian"),
-            FabricEntityTypeBuilder.createLiving().entityFactory(ShroomianEntity::new).trackRangeChunks(4).dimensions(EntityDimensions.fixed(3f, 3f)).build()
+            FabricEntityTypeBuilder.createLiving().entityFactory(ShroomianEntity::new).trackRangeChunks(4).dimensions(EntityDimensions.fixed(0.45f, 0.5f)).build()
     );
 
     public static void init()
