@@ -3,6 +3,7 @@ package com.github.turtlelabsmc.reverie;
 import com.github.turtlelabsmc.reverie.event.EventManager;
 import com.github.turtlelabsmc.reverie.registry.FeatureRegistry;
 import com.github.turtlelabsmc.reverie.registry.ReverieObjects;
+import com.github.turtlelabsmc.reverie.registry.EntityRegistry;
 import com.github.turtlelabsmc.reverie.registry.PotionRegistry;
 import com.github.turtlelabsmc.reverie.registry.StatusEffectRegistry;
 import net.fabricmc.api.ModInitializer;
@@ -29,6 +30,7 @@ public class Reverie implements ModInitializer
         StatusEffectRegistry.register();
         ReverieObjects.register();
         FeatureRegistry.register();
+        EntityRegistry.init();
     }
 
     public static Identifier modId(String path)
