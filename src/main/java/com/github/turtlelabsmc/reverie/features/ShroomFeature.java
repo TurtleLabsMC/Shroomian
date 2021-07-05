@@ -22,13 +22,16 @@ import net.minecraft.world.gen.feature.util.FeatureContext;
 
 import java.util.Random;
 
-public class ShroomFeature extends Feature<DefaultFeatureConfig> {
-    public ShroomFeature(Codec<DefaultFeatureConfig> config) {
+public class ShroomFeature extends Feature<DefaultFeatureConfig>
+{
+    public ShroomFeature(Codec<DefaultFeatureConfig> config)
+    {
         super(config);
     }
 
     @Override
-    public boolean generate(FeatureContext<DefaultFeatureConfig> ctx) {
+    public boolean generate(FeatureContext<DefaultFeatureConfig> ctx)
+    {
         StructureWorldAccess world = ctx.getWorld();
         System.out.println("HEY   ->   " + ctx.getOrigin().toShortString());
         Random random = ctx.getRandom();
@@ -55,14 +58,16 @@ public class ShroomFeature extends Feature<DefaultFeatureConfig> {
         return true;
     }
 
-    public static void generateShroom(WorldAccess world, Random random, BlockPos.Mutable pos, int minAge, int maxAge) {
+    public static void generateShroom(WorldAccess world, Random random, BlockPos.Mutable pos, int minAge, int maxAge)
+    {
         // Assumes `pos` is air block
         if (world.isAir(pos)) {
             world.setBlockState(pos, ReverieObjects.SHROOM_BLOCK.getDefaultState().with(ShroomBlock.AGE, MathHelper.nextInt(random, minAge, maxAge)), Block.NOTIFY_LISTENERS);
         }
     }
 
-    private static boolean canGenerate(WorldAccess world, BlockPos.Mutable pos) {
+    private static boolean canGenerate(WorldAccess world, BlockPos.Mutable pos)
+    {
         // Don't generate at y=0
         do {
             pos.move(0, -1, 0);
@@ -75,7 +80,8 @@ public class ShroomFeature extends Feature<DefaultFeatureConfig> {
         return true;
     }
 
-    private static boolean isNotSuitable(WorldAccess world, BlockPos pos) {
+    private static boolean isNotSuitable(WorldAccess world, BlockPos pos)
+    {
         // Not air, and one of the Nylium variants
         if (!world.isAir(pos)) {
             return true;
