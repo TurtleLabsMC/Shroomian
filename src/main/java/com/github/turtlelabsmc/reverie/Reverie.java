@@ -1,11 +1,7 @@
 package com.github.turtlelabsmc.reverie;
 
 import com.github.turtlelabsmc.reverie.event.EventManager;
-import com.github.turtlelabsmc.reverie.registry.FeatureRegistry;
-import com.github.turtlelabsmc.reverie.registry.ReverieObjects;
-import com.github.turtlelabsmc.reverie.registry.EntityRegistry;
-import com.github.turtlelabsmc.reverie.registry.PotionRegistry;
-import com.github.turtlelabsmc.reverie.registry.StatusEffectRegistry;
+import com.github.turtlelabsmc.reverie.registry.*;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.minecraft.item.ItemGroup;

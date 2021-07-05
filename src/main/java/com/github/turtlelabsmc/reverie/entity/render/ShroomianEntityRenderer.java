@@ -1,7 +1,6 @@
 package com.github.turtlelabsmc.reverie.entity.render;
 
 import com.github.turtlelabsmc.reverie.Reverie;
-import com.github.turtlelabsmc.reverie.client.EntityModels;
 import com.github.turtlelabsmc.reverie.entity.ShroomianEntity;
 import com.github.turtlelabsmc.reverie.entity.model.ShroomianEntityModel;
 import net.fabricmc.api.EnvType;
