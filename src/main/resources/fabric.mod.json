@@ -1,26 +1,26 @@
 {
   "schemaVersion": 1,
-  "id": "reverie",
+  "id": "shroomian",
   "version": "${version}",
-  "name": "Reverie",
+  "name": "Shroomian",
   "description": "",
   "authors": [],
   "contact": {
-    "repo": "https://github.com/TurtleLabsMC/Reverie"
+    "repo": "https://github.com/TurtleLabsMC/Shroomian"
   },
   "license": "",
-  "icon": "assets/Reverie/icon.png",
+  "icon": "assets/shroomian/icon.png",
   "environment": "*",
   "entrypoints": {
     "client": [
-      "com.github.turtlelabsmc.reverie.client.ReverieClient"
+      "com.github.turtlelabsmc.shroomian.client.ShroomianClient"
     ],
     "main": [
-      "com.github.turtlelabsmc.reverie.Reverie"
+      "com.github.turtlelabsmc.shroomian.Shroomian"
     ]
   },
   "mixins": [
-    "reverie.mixins.json"
+    "shroomian.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=0.11.6",

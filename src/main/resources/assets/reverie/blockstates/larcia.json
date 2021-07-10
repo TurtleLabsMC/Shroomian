@@ -1,6 +1,0 @@
-{
-  "variants": {
-    "withered=false": { "model": "reverie:block/larcia" },
-    "withered=true": { "model": "reverie:block/withered_larcia" }
-  }
-}
