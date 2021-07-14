@@ -27,7 +27,7 @@ public class FeatureRegistry
       Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, shroom.getValue(), SHROOM_CONFIGURED);
 
       BiomeModifications.addFeature(
-              BiomeSelectors.includeByKey(new RegistryKey[]{BiomeKeys.WARPED_FOREST, BiomeKeys.CRIMSON_FOREST}),
+              BiomeSelectors.includeByKey(BiomeKeys.WARPED_FOREST, BiomeKeys.CRIMSON_FOREST),
               GenerationStep.Feature.UNDERGROUND_DECORATION, shroom
       );
     }

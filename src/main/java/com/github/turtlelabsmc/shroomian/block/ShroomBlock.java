@@ -14,7 +14,7 @@ import net.minecraft.world.BlockView;
 
 public class ShroomBlock extends PlantBlock
 {
-    public static final IntProperty AGE;
+    public static final IntProperty AGE = Properties.AGE_3;;
     //public static final BooleanProperty WARPED = BooleanProperty.of("warped");
 
     public ShroomBlock(Settings settings)
@@ -28,7 +28,8 @@ public class ShroomBlock extends PlantBlock
         return floor.isIn(BlockTags.NYLIUM);
     }
 
-    public boolean hasRandomTicks(BlockState state) {
+    public boolean hasRandomTicks(BlockState state)
+    {
         return state.get(AGE) < 3;
     }
 
@@ -40,9 +41,5 @@ public class ShroomBlock extends PlantBlock
     protected void appendProperties(StateManager.Builder<Block, BlockState> stateManager)
     {
         stateManager.add(AGE);
-    }
-
-    static {
-        AGE = Properties.AGE_3;
     }
 }

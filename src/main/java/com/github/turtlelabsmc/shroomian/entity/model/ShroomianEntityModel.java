@@ -52,7 +52,7 @@ public class ShroomianEntityModel extends SinglePartEntityModel<ShroomianEntity>
         ModelData modelData = new ModelData();
         ModelPartData modelPartData = modelData.getRoot();
 
-        modelPartData.addChild("cap", ModelPartBuilder.create().uv(0, 0).cuboid(-6.0F, -3.5F, -6.0F, 12.0F, 5.0F, 12.0F).cuboid(-6.0F, -3.5F, -6.0F, 12.0F, 5.0F, 12.0F).cuboid(-5.0F, 1.5F, -5.0F, 10.0F, 1.0F, 10.0F), ModelTransform.pivot(0.0F, 15.6F, 1.2F));
+        modelPartData.addChild("cap", ModelPartBuilder.create().uv(0, 0).cuboid(-6.0F, -3.5F, -6.0F, 12.0F, 5.0F, 12.0F).cuboid(-6.0F, -3.5F, -6.0F, 12.0F, 5.0F, 12.0F).uv(0, 17).cuboid(-5.0F, 1.5F, -5.0F, 10.0F, 1.0F, 10.0F), ModelTransform.pivot(0.0F, 15.6F, 1.2F));
         modelPartData.addChild("body", ModelPartBuilder.create().uv(0, 28).cuboid(-3.0F, -8.0F, -3.0F, 6.0F, 6.0F, 6.0F), ModelTransform.pivot(0.0F, 24.0F, 0.0F));
         modelPartData.addChild("arm_left", ModelPartBuilder.create().uv(0, 0).cuboid(-1.1F, 0.0F, -1.0F, 2.0F, 4.0F, 2.0F), ModelTransform.pivot(4.0F, 18.0F, 0.0F));
         modelPartData.addChild("arm_right", ModelPartBuilder.create().uv(0, 0).cuboid(-0.9F, 0.0F, -1.0F, 2.0F, 4.0F, 2.0F), ModelTransform.pivot(-4.0F, 18.0F, 0.0F));
