@@ -49,7 +49,9 @@ public abstract class ShroomEntity extends AnimalEntity
     public boolean onHit()
     {
         LivingEntity livingEntity = this.getAttacker();
-        livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.POISON, 60, 1));
+        if (!(livingEntity instanceof ShroomEntity)) {
+            livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.POISON, 60, 1));
+        }
         return true;
     }
 
