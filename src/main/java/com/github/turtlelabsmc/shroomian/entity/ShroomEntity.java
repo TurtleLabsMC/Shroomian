@@ -22,10 +22,7 @@ import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeKeys;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @SuppressWarnings("EntityConstructor")
@@ -42,14 +39,18 @@ public abstract class ShroomEntity extends AnimalEntity
     {
         if (!entity.noClip && !this.noClip) {
             LivingEntity livingEntity = (LivingEntity)entity;
-            livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.POISON, 100, 1));
+            if (!(livingEntity instanceof ShroomEntity)) {
+                livingEntity.setAttacker(this);
+                livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.POISON, 100, 1));
+            }
         }
     }
 
     public boolean onHit()
     {
-        LivingEntity livingEntity = this.getAttacker();
+        LivingEntity livingEntity = Objects.requireNonNull(this.getAttacker());
         if (!(livingEntity instanceof ShroomEntity)) {
+            livingEntity.setAttacker(this);
             livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.POISON, 60, 1));
         }
         return true;
@@ -61,6 +62,12 @@ public abstract class ShroomEntity extends AnimalEntity
             return this.onHit();
         }
         return false;
+    }
+
+    @Override
+    public boolean canHaveStatusEffect(StatusEffectInstance effect)
+    {
+        return effect.getEffectType() != StatusEffects.POISON;
     }
 
     @Override
