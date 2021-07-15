@@ -20,7 +20,7 @@ public class EntityRegistry
     public static final EntityType<SporelingEntity> SPORELING = Registry.register(
             Registry.ENTITY_TYPE,
             Shroomian.modId("sporeling"),
-            FabricEntityTypeBuilder.createLiving().entityFactory(SporelingEntity::new).trackRangeChunks(4).dimensions(EntityDimensions.fixed(0.625f, 0.625f)).build()
+            FabricEntityTypeBuilder.createLiving().entityFactory(SporelingEntity::new).trackRangeChunks(4).dimensions(EntityDimensions.fixed(0.625f, 0.53f)).build()
     );
 
     public static void init()

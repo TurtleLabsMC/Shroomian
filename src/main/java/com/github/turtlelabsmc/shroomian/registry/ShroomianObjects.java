@@ -5,7 +5,8 @@ import com.github.turtlelabsmc.shroomian.block.ShroomBlock;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
 import net.minecraft.block.Material;
-import net.minecraft.item.*;
+import net.minecraft.item.BlockItem;
+import net.minecraft.item.Item;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
@@ -18,7 +19,7 @@ public class ShroomianObjects
     private static final Map<Block, Identifier> BLOCKS = new HashMap<>();
 
     public static final Block SHROOM_BLOCK = addBlockToRegistry("shroom", new ShroomBlock(FabricBlockSettings.of(Material.SOLID_ORGANIC)), false);
-    public static final Item SHROOM = addItemToRegistry("shroom", new AliasedBlockItem(SHROOM_BLOCK, withReverieGroup()));
+    public static final Item SHROOM = addItemToRegistry("shroom", new Item(withReverieGroup()));
 
     public static void register()
     {
