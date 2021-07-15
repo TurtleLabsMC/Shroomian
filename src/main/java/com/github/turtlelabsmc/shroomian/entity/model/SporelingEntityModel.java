@@ -37,22 +37,22 @@ public class SporelingEntityModel extends SinglePartEntityModel<SporelingEntity>
 	}
 
 	@Override
-	public void setAngles(SporelingEntity entity, float limbSwing, float limbSwingAmount, float animationProgress, float netHeadYaw, float headPitch){
-		//if (entity.getNavigation().isFollowingPath()) {
-			this.cap.roll = MathHelper.sin(-20 + animationProgress * 0.3f) * DEG_RAD_2;
-			this.body.roll = MathHelper.sin(animationProgress * 0.3f) * DEG_RAD_2;
+	public void setAngles(SporelingEntity entity, float limbAngle, float limbDistance, float animationProgress, float netHeadYaw, float headPitch)
+	{
+		this.cap.roll = MathHelper.sin(-0.52f + animationProgress * 0.3f) * DEG_RAD_2;
+		this.body.roll = MathHelper.sin(animationProgress * 0.3f) * DEG_RAD_2;
+		if (limbDistance > 0.001)
+		{
 			this.arm_left.pitch = MathHelper.cos(animationProgress * 0.3f) * DEG_RAD_20;
 			this.leg_left.pitch = MathHelper.cos(animationProgress * 0.3f) * -DEG_RAD_20;
 			this.leg_right.pitch = MathHelper.cos(animationProgress * 0.3f) * DEG_RAD_20;
 			this.arm_right.pitch = MathHelper.cos(animationProgress * 0.3f) * -DEG_RAD_20;
-		/*} else {
-			this.cap.roll = 0.0f;
-			this.body.roll = 0.0f;
+		} else {
 			this.arm_left.pitch = 0.0f;
 			this.leg_left.pitch = 0.0f;
 			this.leg_right.pitch = 0.0f;
 			this.arm_right.pitch = 0.0f;
-		}*/
+		}
 	}
 
 	static {

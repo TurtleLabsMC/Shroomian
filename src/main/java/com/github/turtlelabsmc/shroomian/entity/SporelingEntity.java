@@ -34,7 +34,7 @@ public class SporelingEntity extends ShroomEntity
     {
         this.goalSelector.add(0, new SwimGoal(this));
         this.goalSelector.add(1, new EscapeDangerGoal(this, 0.3D));
-        this.goalSelector.add(2, new FleeEntityGoal<>(this, PlayerEntity.class, 6.0f, 1.0, 1.2));
+        this.goalSelector.add(1, new FleeEntityGoal<>(this, PlayerEntity.class, 8.0f, 1.5, 2.0));
         this.goalSelector.add(3, new WanderAroundFarGoal(this, 1.0D));
         this.goalSelector.add(3, new LookAtEntityGoal(this, HoglinEntity.class, 6.0F));
         this.goalSelector.add(4, new LookAroundGoal(this));
